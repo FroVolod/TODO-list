@@ -6,4 +6,4 @@ from todo_api.models import Task
 class TaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = Task
-        fields = ('id', 'title', 'date_creation', 'date_due', 'flag_due')
+        fields = ('id', 'title', 'date_creation', 'flag_due', 'order')
