@@ -54,9 +54,7 @@ export default {
     },
     methods: {
         onEnd(evt) {
-            console.log('####', evt.oldIndex, ' * ', evt.newIndex)
             if (evt.oldIndex===evt.newIndex) return
-            console.log('hfhfhhfhhhh')
             const formData = new FormData();
             formData.append('oldIndex', evt.oldIndex);
             formData.append('newIndex', evt.newIndex);
