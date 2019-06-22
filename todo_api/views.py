@@ -24,23 +24,23 @@ class TaskView(APIView):
         return Response({'status': 'Error'})
 
     def put(self, request, id):
-        new_flag_due = request.data.get('flag_due')
+        new_is_done = request.data.get('isDone')
         old_index = request.data.get('oldIndex')
         new_index = request.data.get('newIndex')
-        if new_flag_due:
-            status_task = Task.objects.filter(id=id).update(flag_due=new_flag_due)
+        if new_is_done:
+            status_task = Task.objects.filter(id=id).update(is_done=new_is_done)
             if status_task == 1:
                 return Response({'status': 'Updated'})
             return Response({'status': 'Error'})
         elif new_index or old_index:
             new_index, old_index = int(new_index), int(old_index)
             task_old = Task.objects.filter(order=old_index).first()
-            if old_index - new_index < 0:
+            if old_index < new_index:
                 order_task = Task.objects \
                                     .filter(order__lte=new_index) \
                                     .filter(order__gt=old_index) \
                                     .update(order=F('order') - 1)
-            elif old_index - new_index > 0:
+            elif old_index > new_index:
                 order_task = Task.objects \
                                     .filter(order__gte=new_index) \
                                     .filter(order__lte=old_index) \

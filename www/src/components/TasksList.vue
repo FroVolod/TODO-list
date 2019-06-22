@@ -14,8 +14,8 @@
                     <b-col cols='1'>
                         <b-form-checkbox
                             :key="task.id"
-                            :checked="task.flag_due"
-                            @change='changeTaskStatus(task.id, !task.flag_due)'
+                            :checked="task.is_done"
+                            @change='changeTaskStatus(task.id, !task.is_done)'
                         >
                         </b-form-checkbox>
                     </b-col>
@@ -102,9 +102,9 @@ export default {
             });
         },
         changeTaskStatus(id, status) {
-            var flag_due = status ? 'True' : 'False'
+            const isDone = status ? 'True' : 'False'
             const formData = new FormData();
-            formData.append('flag_due', flag_due);
+            formData.append('isDone', isDone);
             fetch(`http://127.0.0.1:8000/api/tasks/${id}/`, {
                 method: 'PUT',
                 body: formData
