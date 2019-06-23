@@ -23,7 +23,7 @@ class TaskView(APIView):
             return Response({'status': 'Added'})
         return Response({'status': 'Error'})
 
-    def put(self, request, id):
+    def patch(self, request, id):
         new_is_done = request.data.get('isDone')
         old_index = request.data.get('oldIndex')
         new_index = request.data.get('newIndex')

@@ -59,7 +59,7 @@ export default {
             formData.append('oldIndex', evt.oldIndex);
             formData.append('newIndex', evt.newIndex);
             fetch(`http://127.0.0.1:8000/api/tasks/`, {
-                method: 'PUT',
+                method: 'PATCH',
                 body: formData
             })
             .then(JSON)  
@@ -106,7 +106,7 @@ export default {
             const formData = new FormData();
             formData.append('isDone', isDone);
             fetch(`http://127.0.0.1:8000/api/tasks/${id}/`, {
-                method: 'PUT',
+                method: 'PATCH',
                 body: formData
             })
             .then(JSON)  
