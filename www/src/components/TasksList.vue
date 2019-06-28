@@ -56,8 +56,8 @@ export default {
         onEnd(evt) {
             if (evt.oldIndex===evt.newIndex) return
             const formData = new FormData();
-            formData.append('oldIndex', evt.oldIndex);
-            formData.append('newIndex', evt.newIndex);
+            formData.append('old_index', evt.oldIndex);
+            formData.append('new_index', evt.newIndex);
             fetch(`http://127.0.0.1:8000/api/tasks/`, {
                 method: 'PATCH',
                 body: formData
@@ -104,7 +104,7 @@ export default {
         changeTaskStatus(id, status) {
             const isDone = status ? 'True' : 'False'
             const formData = new FormData();
-            formData.append('isDone', isDone);
+            formData.append('new_is_done', isDone);
             fetch(`http://127.0.0.1:8000/api/tasks/${id}/`, {
                 method: 'PATCH',
                 body: formData
